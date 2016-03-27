@@ -2,6 +2,7 @@ import React, {
   AppRegistry,
   Component,
   Dimensions,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,8 +10,9 @@ import React, {
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
-const margin = 10;
+const margin = 2;
 
+const img = 'https://img0.etsystatic.com/060/0/9699076/il_340x270.743238558_jhbk.jpg';
 const sample = [
   ['foo', 'red'],
   ['bar', 'blue'],
@@ -26,7 +28,12 @@ class UncoverlyAM extends Component {
           styles.page,
           {backgroundColor: d[1]}
         ]}>
-          <Text>Card {d[0]}</Text>
+          <Text style={styles.num}>{i + 1}</Text>
+          <Image
+            source={{uri: img}}
+            style={styles.thumbnail}
+          />
+          <Text style={styles.title}>{d[0]}</Text>
         </View>
       )
     });
@@ -64,12 +71,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  thumbnail: {
+    marginTop: 30,
+    marginBottom: 30,
+    width: 340,
+    height: 270,
+  },
+  num: {
+    fontSize: 20,
+  },
+  title: {
+    fontSize: 16,
+  },
   btn: {
     position: 'absolute',
     bottom: margin,
-    left: margin,
-    width: 50,
-    height: 50,
+    right: margin,
+    width: 25,
+    height: 25,
     backgroundColor: '#000',
   },
 });
